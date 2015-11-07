@@ -1,0 +1,1432 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="MainTab" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="MainTab" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JTabbedPane" name="MainTab">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JTabbedPane" name="FacultyTab">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Faculty">
+                <Property name="tabTitle" type="java.lang.String" value="Faculty"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="FacultyPanel">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Faculty">
+                    <Property name="tabTitle" type="java.lang.String" value="Faculty"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLayeredPane3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="251" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane3" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="FacultyRefreshButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="FacultyDeleteRow" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="183" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="FacultyRefreshButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="FacultyDeleteRow" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane3" min="-2" pref="307" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLayeredPane3" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="FacultyTable">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="4" rowCount="4">
+                            <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="FacultyTableMouseClicked"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JLayeredPane" name="jLayeredPane3">
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="FacultyIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FacultyFNAMELabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FacultyDEPTIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="FacultySubmitButton" alignment="0" pref="130" max="32767" attributes="0"/>
+                                  <Component id="FacultyFNAMEBox" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="FacultyFIDBox" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="FacultyDEPTIDBox" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="FacultyIDLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FacultyFNAMELabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FacultyDEPTIDLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="FacultyFIDBoxNEW" pref="124" max="32767" attributes="0"/>
+                                      <Component id="FacultyFNAMEBoxNEW" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="FacultyDEPTIDBoxNEW" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="FacultySubmitButtonNEW" min="-2" pref="130" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="FacultyFIDBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="FacultyIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="FacultyFNAMEBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="FacultyFNAMELabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="FacultyDEPTIDBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="FacultyDEPTIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="FacultyFIDBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="FacultyIDLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="FacultyFNAMEBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="FacultyFNAMELabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="FacultyDEPTIDBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="FacultyDEPTIDLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="FacultySubmitButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FacultySubmitButtonNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextField" name="FacultyFIDBox">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="FacultyFNAMEBox">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="FacultyDEPTIDBox">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="FacultyIDLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Faculty ID:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="FacultyFNAMELabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Faculty Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="FacultyDEPTIDLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Department ID:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="FacultySubmitButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Submit Edit"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="FacultySubmitButtonMouseClicked"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="FacultyFIDBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="FacultyIDLabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Faculty ID:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="FacultyFNAMELabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Faculty Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="FacultyFNAMEBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="FacultyDEPTIDLabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Department ID:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="FacultyDEPTIDBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JButton" name="FacultySubmitButtonNEW">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Submit New"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="FacultySubmitButtonNEWMouseClicked"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JButton" name="FacultyRefreshButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Refresh"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="FacultyRefreshButtonMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="FacultyDeleteRow">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Delete Row"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FacultyDeleteRowActionPerformed"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JTabbedPane" name="StaffTab">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Staff">
+                <Property name="tabTitle" type="java.lang.String" value="Staff"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="StaffPanel">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Staff">
+                    <Property name="tabTitle" type="java.lang.String" value="Staff"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLayeredPane2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="122" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane2" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="StaffRefreshButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="StaffDeleteRow" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="183" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="StaffRefreshButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="StaffDeleteRow" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane2" min="-2" pref="307" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLayeredPane2" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="StaffTable">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="4" rowCount="4">
+                            <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="StaffTableMouseClicked"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JLayeredPane" name="jLayeredPane2">
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="StaffIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="StaffSNAMELabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="StaffDEPTIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="StaffSubmitButton" alignment="0" pref="130" max="32767" attributes="0"/>
+                                  <Component id="StaffSNAMEBox" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="StaffSIDBox" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="StaffDEPTIDBox" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="StaffIDLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="StaffSNAMELabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="StaffDEPTIDLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="StaffSIDBoxNEW" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="StaffSNAMEBoxNEW" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="StaffDEPTIDBoxNEW" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="StaffSubmitButtonNEW" alignment="0" pref="130" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="144" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="StaffSIDBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="StaffIDLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="StaffSNAMEBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="StaffSNAMELabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="StaffDEPTIDBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="StaffDEPTIDLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="StaffSubmitButtonNEW" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="StaffSIDBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="StaffIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="StaffSNAMEBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="StaffSNAMELabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="StaffDEPTIDBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="StaffDEPTIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="StaffSubmitButton" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextField" name="StaffSIDBox">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="StaffSNAMEBox">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="StaffDEPTIDBox">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="StaffIDLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Staff ID:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="StaffSNAMELabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Staff Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="StaffDEPTIDLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Department ID:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="StaffSubmitButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Submit Edit"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="StaffSubmitButtonMouseClicked"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="StaffSIDBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="StaffIDLabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Staff ID:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="StaffSNAMEBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="StaffSNAMELabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Staff Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="StaffDEPTIDBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="StaffDEPTIDLabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Department ID:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="StaffSubmitButtonNEW">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Submit New"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="StaffSubmitButtonNEWMouseClicked"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JButton" name="StaffRefreshButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Refresh"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="StaffRefreshButtonMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="StaffDeleteRow">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Delete Row"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StaffDeleteRowActionPerformed"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JTabbedPane" name="CoursesTab">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Courses">
+                <Property name="tabTitle" type="java.lang.String" value="Courses"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="CoursesPanel">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Courses">
+                    <Property name="tabTitle" type="java.lang.String" value="Courses"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLayeredPane5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="126" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane5" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="CourseRefreshButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="CoursesDeleteRow" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="183" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="CourseRefreshButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="CoursesDeleteRow" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane5" min="-2" pref="307" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLayeredPane5" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="CoursesTable">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="4" rowCount="4">
+                            <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CoursesTableMouseClicked"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JLayeredPane" name="jLayeredPane5">
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="CourseMaxStudentsLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="CourseMaxStudentsBox" pref="57" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="483" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="CourseInstructorLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Component id="CourseInstructorComboBox" min="-2" pref="132" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="CourseIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="CourseNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="CourseRoomLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="CourseBuildingLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="CourseSubmitButton" alignment="0" pref="130" max="32767" attributes="0"/>
+                                                  <Component id="CourseNameBox" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="CourseIDBox" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="CourseBuildingBox" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="CourseRoomBox" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="CourseBuildingLabelNew" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="CourseNameLabelNew" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="CourseIDLabelNew" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="CourseRoomLabelNew" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="CourseInstructorLabelNew" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="CourseSubmitButtonNEW" pref="161" max="32767" attributes="0"/>
+                                                  <Component id="CourseIDBoxNEW" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="CourseNameBoxNEW" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="CourseBuildingBoxNEW" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="CourseRoomBoxNEW" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="CourseInstructorComboBoxNEW" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="CourseMaxStudentsLabelNew" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="CourseMaxStudentsBoxNEW" min="-2" pref="63" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="CourseIDBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseIDLabelNew" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseIDBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="CourseNameBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseNameLabelNew" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseNameBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="CourseBuildingBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseBuildingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseBuildingLabelNew" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseBuildingBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="CourseRoomLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseRoomLabelNew" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseRoomBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseRoomBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="CourseInstructorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseInstructorLabelNew" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseInstructorComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseInstructorComboBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="CourseMaxStudentsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseMaxStudentsLabelNew" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseMaxStudentsBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseMaxStudentsBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="CourseSubmitButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CourseSubmitButtonNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextField" name="CourseIDBox">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="CourseNameBox">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="CourseBuildingBox">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="CourseIDLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Course ID:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="CourseNameLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Course Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="CourseRoomLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Room:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="CourseSubmitButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Submit Edit"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CourseSubmitButtonMouseClicked"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="CourseIDBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="CourseIDLabelNew">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Course ID:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="CourseNameBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="CourseNameLabelNew">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Course Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="CourseBuildingBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="CourseBuildingLabelNew">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Building:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="CourseSubmitButtonNEW">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Submit New"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CourseSubmitButtonNEWMouseClicked"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="CourseBuildingLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Building:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="CourseMaxStudentsLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Max Students:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="CourseInstructorLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Instructor:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="CourseRoomLabelNew">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Room:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="CourseInstructorLabelNew">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Instructor:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="CourseMaxStudentsLabelNew">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Max Students:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="CourseMaxStudentsBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="CourseRoomBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="CourseMaxStudentsBox">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="CourseRoomBox">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="CourseInstructorComboBox">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.DefaultComboBoxModel()" type="code"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="CourseInstructorComboBoxNEW">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.DefaultComboBoxModel()" type="code"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JButton" name="CourseRefreshButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Refresh"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CourseRefreshButtonMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="CoursesDeleteRow">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Delete Row"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CoursesDeleteRowActionPerformed"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JTabbedPane" name="Enrolled">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Enrolled">
+                <Property name="tabTitle" type="java.lang.String" value="Enrolled"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+        </Container>
+        <Container class="javax.swing.JTabbedPane" name="DepartmentsTab">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Departments">
+                <Property name="tabTitle" type="java.lang.String" value="Departments"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="DeptPanel">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Staff">
+                    <Property name="tabTitle" type="java.lang.String" value="Staff"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLayeredPane4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="124" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane4" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="DeptRefreshButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="DeptDeleteRow" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="183" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="DeptRefreshButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DeptDeleteRow" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane4" min="-2" pref="307" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLayeredPane4" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="DeptTable">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="4" rowCount="4">
+                            <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="DeptTableMouseClicked"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JLayeredPane" name="jLayeredPane4">
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="DeptIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeptNAMELabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="DeptSubmitButton" alignment="0" pref="130" max="32767" attributes="0"/>
+                                  <Component id="DeptNAMEBox" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="DeptIDBox" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="DeptIDLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DeptNAMELabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="DeptIDBoxNEW" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="DeptNAMEBoxNEW" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="DeptSubmitButtonNEW" alignment="0" pref="130" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="144" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="DeptIDBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="DeptIDLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="DeptNAMEBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="DeptNAMELabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                      <Component id="DeptSubmitButtonNEW" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="DeptIDBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="DeptIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="DeptNAMEBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="DeptNAMELabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                      <Component id="DeptSubmitButton" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="259" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextField" name="DeptIDBox">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="DeptNAMEBox">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="DeptIDLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Dept ID:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="DeptNAMELabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Dept Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="DeptSubmitButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Submit Edit"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="DeptSubmitButtonMouseClicked"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="DeptIDBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="DeptIDLabel2">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Dept ID:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="DeptNAMEBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="DeptNAMELabel2">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Dept Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="DeptSubmitButtonNEW">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Submit New"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="DeptSubmitButtonNEWMouseClicked"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JButton" name="DeptRefreshButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Refresh"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="DeptRefreshButtonMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="DeptDeleteRow">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Delete Row"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeptDeleteRowActionPerformed"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JTabbedPane" name="StudentsTab">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Students">
+                <Property name="tabTitle" type="java.lang.String" value="Students"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="StudentPanel">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Students">
+                    <Property name="tabTitle" type="java.lang.String" value="Students"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLayeredPane1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace pref="47" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
+                                  <Component id="StudentRefreshButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="StudentDeleteRow" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="183" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="StudentRefreshButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="StudentDeleteRow" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" min="-2" pref="307" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLayeredPane1" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="StudentTable">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="4" rowCount="4">
+                            <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="StudentTableMouseClicked"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JLayeredPane" name="jLayeredPane1">
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="SIDLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SNAMELabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="MAJORLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="AGELabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="S_LEVELLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="AGEBox" max="32767" attributes="0"/>
+                                  <Component id="StudentSubmitButton" pref="130" max="32767" attributes="0"/>
+                                  <Component id="SNAMEBox" max="32767" attributes="0"/>
+                                  <Component id="SIDBox" max="32767" attributes="0"/>
+                                  <Component id="MAJORBox" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="S_LEVELCOMBO" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="SIDLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SNAMELabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="MAJORLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="S_LEVELLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="AGELabel1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="SNAMEBoxNEW" pref="130" max="32767" attributes="0"/>
+                                  <Component id="SIDBoxNEW" pref="130" max="32767" attributes="0"/>
+                                  <Component id="MAJORBoxNEW" pref="130" max="32767" attributes="0"/>
+                                  <Component id="AGEBoxNEW" pref="130" max="32767" attributes="0"/>
+                                  <Component id="StudentSubmitButtonNEW" pref="130" max="32767" attributes="0"/>
+                                  <Component id="S_LEVELCOMBONEW" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="205" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="SIDBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SIDBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SIDLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="SNAMEBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SNAMELabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SNAMELabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SNAMEBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="MAJORBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="MAJORLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="MAJORBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="MAJORLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="S_LEVELLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="S_LEVELLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="S_LEVELCOMBONEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="S_LEVELCOMBO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="AGEBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="AGELabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="AGEBoxNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="AGELabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="StudentSubmitButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="StudentSubmitButtonNEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextField" name="SIDBox">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="SNAMEBox">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="MAJORBox">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="AGEBox">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="SIDLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Student ID:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="SNAMELabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Student Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="MAJORLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Major:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="S_LEVELLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Year:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="AGELabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Age:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="StudentSubmitButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Submit Edit"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="StudentSubmitButtonMouseClicked"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="SIDBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="SNAMEBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="MAJORBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="AGEBoxNEW">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="SIDLabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Student ID:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="SNAMELabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Student Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="MAJORLabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Major:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="S_LEVELLabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Year:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="AGELabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Age:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="StudentSubmitButtonNEW">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Submit New"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="StudentSubmitButtonNEWMouseClicked"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="S_LEVELCOMBONEW">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;Freshman&quot;, &quot;Sophomore&quot;, &quot;Junior&quot;, &quot;Senior&quot;, &quot;Graduate&quot; })" type="code"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="S_LEVELCOMBO">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;Freshman&quot;, &quot;Sophomore&quot;, &quot;Junior&quot;, &quot;Senior&quot;, &quot;Graduate&quot; })" type="code"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="S_LEVELCOMBOActionPerformed"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JButton" name="StudentRefreshButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Refresh"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="StudentRefreshButtonMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="StudentDeleteRow">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Delete Row"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StudentDeleteRowActionPerformed"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
