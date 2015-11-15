@@ -5,20 +5,129 @@
  */
 package pkg430test;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Scott
  */
 public class StudentFrame extends javax.swing.JFrame {
+    public String StudentID = LoginFrame.getID();
+    public String SelectedCourseID ="";
+    
+    public void setSelectedCourse(String id)
+    {
+        SelectedCourseID = id;
+    }
+    public String getSelectedCourse()
+    {
+        return SelectedCourseID;
+    }
+    public static void setSelectedID(JComboBox combobox, String id, int type)
+    {
+        //Helper function for setting comboBox Items
+        InstructorItem item;
+        StudentItem item2;
+        CourseItem item3;
+        if(type == 1)
+        {
+            for(int i=0; i<combobox.getItemCount(); i++)
+            {
+                item = (InstructorItem)combobox.getItemAt(i);
+                if(item.getid().equals(id))
+                {
+                    combobox.setSelectedIndex(i);
+                }
+            }
+        }
+        if(type == 2)
+        {
+             for(int i=0; i<combobox.getItemCount(); i++)
+            {
+                item2 = (StudentItem)combobox.getItemAt(i);
+                if(item2.getid().equals(id))
+                {
+                    combobox.setSelectedIndex(i);
+                }
+            }
+        }
+        if(type == 3)
+        {
+             for(int i=0; i<combobox.getItemCount(); i++)
+            {
+                item3 = (CourseItem)combobox.getItemAt(i);
+                if(item3.getid().equals(id))
+                {
+                    combobox.setSelectedIndex(i);
+                }
+            }
+        }
+        
+    }
+    
+    private void initEnrolledPage()
+           {
+               try {
+                try (Connection conn = ConnectionConfig.getConnection()) {
+                PreparedStatement st = conn.prepareStatement("Select * from COURSES");
+                ResultSet rs = st.executeQuery();
+                while (rs.next())
+                        {
+                            CoursesComboBox.addItem(new CourseItem(rs.getString("CNAME"), rs.getString("CID")));
+                        }
+                conn.close();
+                
+                
+            }
+                
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+           }
 
     /**
      * Creates new form StudentFrame
      */
     public StudentFrame() {
         initComponents();
-        setTitle("Students");
+        setTitle("Students: Welcome "+StudentID+"!");
+        initEnrolledPage();
+        updateEnrolledTable();
+        updateGradesTable();
     }
 
+     private void updateEnrolledTable()
+    {
+        try {
+            try (Connection conn = ConnectionConfig.getConnection()) {
+                PreparedStatement st = conn.prepareStatement("Select A.CID, B.CNAME, B.MEETS_AT, B.ROOM, C.FNAME from Enrolled A JOIN Courses B ON A.CID = B.CID JOIN Faculty C ON B.FID = C.FID WHERE A.SID='"+StudentID+"' ORDER BY A.CID");
+                ResultSet rs = st.executeQuery();
+                EnrolledTable.setModel(DbUtils.resultSetToTableModel(rs));
+                conn.close();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }
+     
+     private void updateGradesTable()
+     {
+          try {
+            try (Connection conn = ConnectionConfig.getConnection()) {
+                PreparedStatement st = conn.prepareStatement("Select A.CID, B.CNAME, A.EXAM1, A.EXAM2, A.FINAL from Enrolled A JOIN Courses B ON A.CID = B.CID WHERE A.SID='"+StudentID+"' ORDER BY A.CID");
+                ResultSet rs = st.executeQuery();
+                GradesTable.setModel(DbUtils.resultSetToTableModel(rs));
+                conn.close();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,21 +137,259 @@ public class StudentFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        StudentPane = new javax.swing.JTabbedPane();
+        GradesPane = new javax.swing.JTabbedPane();
+        GradePane = new javax.swing.JPanel();
+        jLayeredPane7 = new javax.swing.JLayeredPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        GradesTable = new javax.swing.JTable();
+        EnrollPane = new javax.swing.JTabbedPane();
+        EnrolledPanel = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        EnrolledTable = new javax.swing.JTable();
+        jLayeredPane6 = new javax.swing.JLayeredPane();
+        CoursesComboBox = new javax.swing.JComboBox();
+        AddCourseButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        DropClassButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        GradesTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        GradesTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GradesTableMouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(GradesTable);
+
+        javax.swing.GroupLayout jLayeredPane7Layout = new javax.swing.GroupLayout(jLayeredPane7);
+        jLayeredPane7.setLayout(jLayeredPane7Layout);
+        jLayeredPane7Layout.setHorizontalGroup(
+            jLayeredPane7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane7Layout.createSequentialGroup()
+                .addContainerGap(151, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jLayeredPane7Layout.setVerticalGroup(
+            jLayeredPane7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane7Layout.createSequentialGroup()
+                .addContainerGap(66, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+        );
+        jLayeredPane7.setLayer(jScrollPane7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout GradePaneLayout = new javax.swing.GroupLayout(GradePane);
+        GradePane.setLayout(GradePaneLayout);
+        GradePaneLayout.setHorizontalGroup(
+            GradePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GradePaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLayeredPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(311, Short.MAX_VALUE))
+        );
+        GradePaneLayout.setVerticalGroup(
+            GradePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GradePaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLayeredPane7)
+                .addContainerGap())
+        );
+
+        GradesPane.addTab("Grades", GradePane);
+
+        StudentPane.addTab("See Grades", GradesPane);
+
+        EnrolledTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        EnrolledTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EnrolledTableMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(EnrolledTable);
+
+        CoursesComboBox.setModel(new javax.swing.DefaultComboBoxModel());
+
+        AddCourseButton.setText("Add Class");
+        AddCourseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddCourseButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jLayeredPane6Layout = new javax.swing.GroupLayout(jLayeredPane6);
+        jLayeredPane6.setLayout(jLayeredPane6Layout);
+        jLayeredPane6Layout.setHorizontalGroup(
+            jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane6Layout.createSequentialGroup()
+                .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jLayeredPane6Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(CoursesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jLayeredPane6Layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(AddCourseButton)))
+                .addContainerGap(164, Short.MAX_VALUE))
+        );
+        jLayeredPane6Layout.setVerticalGroup(
+            jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane6Layout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addComponent(CoursesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(AddCourseButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jLayeredPane6.setLayer(CoursesComboBox, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane6.setLayer(AddCourseButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel1.setText("Current Classes:");
+
+        DropClassButton.setText("Drop Class");
+        DropClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DropClassButtonMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setText("Select A Class to Drop:");
+
+        javax.swing.GroupLayout EnrolledPanelLayout = new javax.swing.GroupLayout(EnrolledPanel);
+        EnrolledPanel.setLayout(EnrolledPanelLayout);
+        EnrolledPanelLayout.setHorizontalGroup(
+            EnrolledPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EnrolledPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                .addGroup(EnrolledPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EnrolledPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(165, 165, 165))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EnrolledPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(153, 153, 153))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EnrolledPanelLayout.createSequentialGroup()
+                        .addComponent(DropClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(145, 145, 145))))
+        );
+        EnrolledPanelLayout.setVerticalGroup(
+            EnrolledPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EnrolledPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLayeredPane6)
+                .addContainerGap())
+            .addGroup(EnrolledPanelLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(DropClassButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        EnrollPane.addTab("Enrolled", EnrolledPanel);
+
+        StudentPane.addTab("Enroll", EnrollPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1071, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(StudentPane))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 481, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(StudentPane))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void EnrolledTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EnrolledTableMouseClicked
+        try
+        {
+            int row = EnrolledTable.getSelectedRow();
+            setSelectedCourse(EnrolledTable.getModel().getValueAt(row, 0).toString());
+            
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.toString());
+
+        }
+    }//GEN-LAST:event_EnrolledTableMouseClicked
+
+    private void DropClassButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DropClassButtonMouseClicked
+         try{
+            String CID = getSelectedCourse();
+            String sql = "DELETE FROM ENROLLED WHERE CID='"+CID+"' AND SID='"+StudentID+"'";
+            Connection conn = ConnectionConfig.getConnection();
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            updateEnrolledTable();
+            updateGradesTable();
+            conn.close();
+            JOptionPane.showMessageDialog(null, "Completed");
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_DropClassButtonMouseClicked
+
+    private void AddCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCourseButtonActionPerformed
+         try{
+            String SID = StudentID;
+            CourseItem item = (CourseItem) CoursesComboBox.getSelectedItem();
+            String CID = item.getid();
+            String sql =  "INSERT INTO ENROLLED (SID, CID, EXAM1, EXAM2, FINAL) VALUES('"+SID+"', '"+CID+"', '0', '0', '0')";
+            Connection conn = ConnectionConfig.getConnection();
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            updateEnrolledTable();
+            updateGradesTable();
+            conn.close();
+            JOptionPane.showMessageDialog(null, "Completed");
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+            
+        }
+    }//GEN-LAST:event_AddCourseButtonActionPerformed
+
+    private void GradesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GradesTableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GradesTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -80,5 +427,23 @@ public class StudentFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddCourseButton;
+    private javax.swing.JComboBox CoursesComboBox;
+    private javax.swing.JButton DropClassButton;
+    private javax.swing.JTabbedPane EnrollPane;
+    private javax.swing.JPanel EnrolledPanel;
+    private javax.swing.JTable EnrolledTable;
+    private javax.swing.JPanel GradePane;
+    private javax.swing.JTabbedPane GradesPane;
+    private javax.swing.JTable GradesTable;
+    private javax.swing.JTabbedPane StudentPane;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLayeredPane jLayeredPane6;
+    private javax.swing.JLayeredPane jLayeredPane7;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     // End of variables declaration//GEN-END:variables
 }
+
+

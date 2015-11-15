@@ -25,13 +25,16 @@ public class FacultyForm extends javax.swing.JFrame {
         setTitle("Faculty");
         updateFacultyTable();
         updateStudentTable();
+        updateDepartmentTable();
+        updateCoursesTable();
+        updateEnrolledTable();
     }
     
     private void updateFacultyTable()
     {
         try {
             try (Connection conn = ConnectionConfig.getConnection()) {
-                PreparedStatement st = conn.prepareStatement("Select FNAME, DEPTID from Faculty ORDER BY FNAME ASC");
+                PreparedStatement st = conn.prepareStatement("Select A.FNAME, A.DEPTID, B.DNAME from Faculty A JOIN Department B ON A.DEPTID = B.DID ORDER BY A.FNAME ASC");
                 ResultSet rs = st.executeQuery();
                 FacultyFacultyTable.setModel(DbUtils.resultSetToTableModel(rs));
                 conn.close();
@@ -47,6 +50,46 @@ public class FacultyForm extends javax.swing.JFrame {
                 PreparedStatement st = conn.prepareStatement("Select * from Students ORDER BY SNAME ASC");
                 ResultSet rs = st.executeQuery();
                 FacultyStudentTable.setModel(DbUtils.resultSetToTableModel(rs));
+                conn.close();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }
+     private void updateEnrolledTable()
+    {
+        try {
+            try (Connection conn = ConnectionConfig.getConnection()) {
+                PreparedStatement st = conn.prepareStatement("Select A.SID, B.SNAME, A.EXAM1, A.EXAM2, A.FINAL from Enrolled A JOIN Students B ON A.SID = B.SID ORDER BY B.SNAME");
+                ResultSet rs = st.executeQuery();
+                FacultyEnrolledTable.setModel(DbUtils.resultSetToTableModel(rs));
+                conn.close();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }
+     
+     private void updateDepartmentTable()
+    {
+        try {
+            try (Connection conn = ConnectionConfig.getConnection()) {
+                PreparedStatement st = conn.prepareStatement("Select * from DEPARTMENT ORDER BY DNAME ASC");
+                ResultSet rs = st.executeQuery();
+                FacultyDeptTable.setModel(DbUtils.resultSetToTableModel(rs));
+                conn.close();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }
+      private void updateCoursesTable()
+    {
+        try {
+            try (Connection conn = ConnectionConfig.getConnection()) {
+                PreparedStatement st = conn.prepareStatement("Select A.CID, A.CNAME, A.MEETS_AT, A.ROOM, A.FID, B.FNAME, A. LIMIT from COURSES A JOIN FACULTY B ON A.FID = B.FID ORDER BY CID ASC");
+                ResultSet rs = st.executeQuery();
+                FacultyCoursesTable.setModel(DbUtils.resultSetToTableModel(rs));
                 conn.close();
             }
         } catch (Exception ex) {
@@ -71,10 +114,14 @@ public class FacultyForm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         FacultyStudentTable = new javax.swing.JTable();
         FacultyEnrolledTab = new javax.swing.JTabbedPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        FacultyEnrolledTable = new javax.swing.JTable();
         FacultyDepartmentsTab = new javax.swing.JTabbedPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        FacultyDeptTab = new javax.swing.JTable();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
+        FacultyDeptTable = new javax.swing.JTable();
+        FacultyCoursesTab = new javax.swing.JTabbedPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        FacultyCoursesTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,9 +158,8 @@ public class FacultyForm extends javax.swing.JFrame {
         FacultyStudentTab.addTab("Students", jScrollPane1);
 
         jTabbedPane1.addTab("Students", FacultyStudentTab);
-        jTabbedPane1.addTab("Enrolled", FacultyEnrolledTab);
 
-        FacultyDeptTab.setModel(new javax.swing.table.DefaultTableModel(
+        FacultyEnrolledTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -124,12 +170,45 @@ public class FacultyForm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(FacultyDeptTab);
+        jScrollPane4.setViewportView(FacultyEnrolledTable);
+
+        FacultyEnrolledTab.addTab("Enrolled", jScrollPane4);
+
+        jTabbedPane1.addTab("Enrolled", FacultyEnrolledTab);
+
+        FacultyDeptTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(FacultyDeptTable);
 
         FacultyDepartmentsTab.addTab("Departments", jScrollPane2);
 
         jTabbedPane1.addTab("Departments", FacultyDepartmentsTab);
-        jTabbedPane1.addTab("Courses", jTabbedPane3);
+
+        FacultyCoursesTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(FacultyCoursesTable);
+
+        FacultyCoursesTab.addTab("Courses", jScrollPane3);
+
+        jTabbedPane1.addTab("Courses", FacultyCoursesTab);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,9 +260,12 @@ public class FacultyForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane FacultyCoursesTab;
+    private javax.swing.JTable FacultyCoursesTable;
     private javax.swing.JTabbedPane FacultyDepartmentsTab;
-    private javax.swing.JTable FacultyDeptTab;
+    private javax.swing.JTable FacultyDeptTable;
     private javax.swing.JTabbedPane FacultyEnrolledTab;
+    private javax.swing.JTable FacultyEnrolledTable;
     private javax.swing.JTabbedPane FacultyFacultyTab;
     private javax.swing.JScrollPane FacultyFacultyTab2;
     private javax.swing.JTable FacultyFacultyTable;
@@ -191,7 +273,8 @@ public class FacultyForm extends javax.swing.JFrame {
     private javax.swing.JTable FacultyStudentTable;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane3;
     // End of variables declaration//GEN-END:variables
 }

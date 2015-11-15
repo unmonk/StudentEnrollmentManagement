@@ -11,7 +11,7 @@ public class ConnectionConfig
     public static Connection getConnection()
     {
         Connection connection = null;
-        String URL = "jdbc:oracle:thin:@xxx";
+        String URL = "xxx";
         String USER = "xxx";
         String PASS = "xxx";
         try {

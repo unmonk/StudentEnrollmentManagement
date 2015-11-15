@@ -12,6 +12,9 @@ package pkg430test;
 import java.sql.*;
 import javax.swing.*;
 import net.proteanit.sql.DbUtils;
+import java.awt.ItemSelectable;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class StaffForm extends javax.swing.JFrame {
     
@@ -23,22 +26,54 @@ public class StaffForm extends javax.swing.JFrame {
     {
         setTitle("Staff");
         initComponents();
-        updateStudentTable();
-        updateStaffTable();
+        //Building all the tables at once. Loading by tab click is too slow
         updateFacultyTable();
-        updateDeptTable();
+        updateStaffTable();
         updateCourseTable();
+        updateDeptTable();
+        updateStudentTable();
+        initEnrolledPage();
+        updateEnrolledTable();
+        
     }
     
-    public static void setSelectedID(JComboBox combobox, String id)
+    public static void setSelectedID(JComboBox combobox, String id, int type)
     {
+        //Helper function for setting comboBox Items
         InstructorItem item;
-        for(int i=0; i<combobox.getItemCount(); i++)
+        StudentItem item2;
+        CourseItem item3;
+        if(type == 1)
         {
-            item = (InstructorItem)combobox.getItemAt(i);
-            if(item.getid().equals(id))
+            for(int i=0; i<combobox.getItemCount(); i++)
             {
-                combobox.setSelectedIndex(i);
+                item = (InstructorItem)combobox.getItemAt(i);
+                if(item.getid().equals(id))
+                {
+                    combobox.setSelectedIndex(i);
+                }
+            }
+        }
+        if(type == 2)
+        {
+             for(int i=0; i<combobox.getItemCount(); i++)
+            {
+                item2 = (StudentItem)combobox.getItemAt(i);
+                if(item2.getid().equals(id))
+                {
+                    combobox.setSelectedIndex(i);
+                }
+            }
+        }
+        if(type == 3)
+        {
+             for(int i=0; i<combobox.getItemCount(); i++)
+            {
+                item3 = (CourseItem)combobox.getItemAt(i);
+                if(item3.getid().equals(id))
+                {
+                    combobox.setSelectedIndex(i);
+                }
             }
         }
         
@@ -50,6 +85,21 @@ public class StaffForm extends javax.swing.JFrame {
                 PreparedStatement st = conn.prepareStatement("Select * from Students ORDER BY SNAME ASC");
                 ResultSet rs = st.executeQuery();
                 StudentTable.setModel(DbUtils.resultSetToTableModel(rs));
+                conn.close();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }
+    
+    private void updateEnrolledTable()
+    {
+        try {
+            CourseItem item = (CourseItem) CourseSelectComboBox.getSelectedItem();
+            try (Connection conn = ConnectionConfig.getConnection()) {
+                PreparedStatement st = conn.prepareStatement("Select A.SID, B.SNAME, A.EXAM1, A.EXAM2, A.FINAL from Enrolled A JOIN Students B ON A.SID = B.SID WHERE A.CID='"+item.getid()+"' ORDER BY B.SNAME");
+                ResultSet rs = st.executeQuery();
+                EnrolledTable.setModel(DbUtils.resultSetToTableModel(rs));
                 conn.close();
             }
         } catch (Exception ex) {
@@ -96,6 +146,33 @@ public class StaffForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.toString());
         }
     }
+           private void initEnrolledPage()
+           {
+               try {
+                try (Connection conn = ConnectionConfig.getConnection()) {
+                PreparedStatement st = conn.prepareStatement("Select * from COURSES");
+                ResultSet rs = st.executeQuery();
+                while (rs.next())
+                        {
+                            CourseSelectComboBox.addItem(new CourseItem(rs.getString("CNAME"), rs.getString("CID")));
+                            EnrolledAddCourseCombo.addItem(new CourseItem(rs.getString("CNAME"), rs.getString("CID")));
+                        }
+                PreparedStatement st2 = conn.prepareStatement("Select * from STUDENTS");
+                ResultSet rs2 = st2.executeQuery();
+                while(rs2.next())
+                {
+                    EnrolledAddStudentCombo.addItem(new StudentItem(rs2.getString("SNAME"), rs2.getString("SID")));
+                    
+                }
+                conn.close();
+                
+                
+            }
+                
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+           }
            private void updateCourseTable()
     {
         try {
@@ -103,11 +180,12 @@ public class StaffForm extends javax.swing.JFrame {
                 PreparedStatement st = conn.prepareStatement("Select * from COURSES ORDER BY CID ASC");
                 ResultSet rs = st.executeQuery();
                 CoursesTable.setModel(DbUtils.resultSetToTableModel(rs));
-                PreparedStatement st2 = conn.prepareStatement("Select * from FACULTY ORDER BY FNAME ASC");
+                PreparedStatement st2 = conn.prepareStatement("Select * from FACULTY");
                 ResultSet rs2 = st2.executeQuery();
                 while (rs2.next())
                         {
                             CourseInstructorComboBox.addItem(new InstructorItem(rs2.getString("FNAME"), rs2.getString("FID")));
+                            CourseInstructorComboBoxNEW.addItem(new InstructorItem(rs2.getString("FNAME"), rs2.getString("FID")));
                         }
                 conn.close();
             }
@@ -202,6 +280,28 @@ public class StaffForm extends javax.swing.JFrame {
         CourseRefreshButton = new javax.swing.JButton();
         CoursesDeleteRow = new javax.swing.JButton();
         Enrolled = new javax.swing.JTabbedPane();
+        EnrolledPanel = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        EnrolledTable = new javax.swing.JTable();
+        jLayeredPane6 = new javax.swing.JLayeredPane();
+        EnrolledExam1Box = new javax.swing.JTextField();
+        EnrolledStudentLabel = new javax.swing.JLabel();
+        EnrolledExam1Label = new javax.swing.JLabel();
+        EnrolledSubmitScoresButton = new javax.swing.JButton();
+        EnrolledExam2Label = new javax.swing.JLabel();
+        EnrolledExam2Box = new javax.swing.JTextField();
+        EnrolledFinalLabel = new javax.swing.JLabel();
+        EnrolledFinalBox = new javax.swing.JTextField();
+        EnrolledStudentCHANGELabel = new javax.swing.JLabel();
+        EnrolledStudentLabel1 = new javax.swing.JLabel();
+        EnrolledStudentIDCHANGElabel = new javax.swing.JLabel();
+        EnrolledRefreshButton = new javax.swing.JButton();
+        EnrolledDeleteRow = new javax.swing.JButton();
+        CourseSelectComboBox = new javax.swing.JComboBox();
+        CourseSelectLAbel = new javax.swing.JLabel();
+        EnrolledAddStudentCombo = new javax.swing.JComboBox();
+        EnrolledAddCourseCombo = new javax.swing.JComboBox();
+        EnrolledAddStudentButton = new javax.swing.JButton();
         DepartmentsTab = new javax.swing.JTabbedPane();
         DeptPanel = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -250,6 +350,17 @@ public class StaffForm extends javax.swing.JFrame {
         StudentDeleteRow = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        MainTab.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                MainTabStateChanged(evt);
+            }
+        });
+        MainTab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MainTabMouseClicked(evt);
+            }
+        });
 
         FacultyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -836,6 +947,218 @@ public class StaffForm extends javax.swing.JFrame {
         CoursesTab.addTab("Courses", CoursesPanel);
 
         MainTab.addTab("Courses", CoursesTab);
+
+        EnrolledTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        EnrolledTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EnrolledTableMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(EnrolledTable);
+
+        EnrolledStudentLabel.setText("Student:");
+
+        EnrolledExam1Label.setText("Exam 1:");
+
+        EnrolledSubmitScoresButton.setText("Submit Scores");
+        EnrolledSubmitScoresButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EnrolledSubmitScoresButtonMouseClicked(evt);
+            }
+        });
+
+        EnrolledExam2Label.setText("Exam 2:");
+
+        EnrolledFinalLabel.setText("Final:");
+
+        EnrolledStudentLabel1.setText("Student ID:");
+
+        EnrolledStudentIDCHANGElabel.setText("        ");
+
+        javax.swing.GroupLayout jLayeredPane6Layout = new javax.swing.GroupLayout(jLayeredPane6);
+        jLayeredPane6.setLayout(jLayeredPane6Layout);
+        jLayeredPane6Layout.setHorizontalGroup(
+            jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jLayeredPane6Layout.createSequentialGroup()
+                        .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EnrolledStudentLabel)
+                            .addComponent(EnrolledExam1Label)
+                            .addComponent(EnrolledExam2Label)
+                            .addComponent(EnrolledFinalLabel))
+                        .addGap(21, 21, 21)
+                        .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EnrolledStudentCHANGELabel)
+                            .addGroup(jLayeredPane6Layout.createSequentialGroup()
+                                .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(EnrolledSubmitScoresButton, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                    .addComponent(EnrolledExam1Box)
+                                    .addComponent(EnrolledExam2Box)
+                                    .addComponent(EnrolledFinalBox))
+                                .addContainerGap(211, Short.MAX_VALUE))))
+                    .addGroup(jLayeredPane6Layout.createSequentialGroup()
+                        .addComponent(EnrolledStudentLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EnrolledStudentIDCHANGElabel)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jLayeredPane6Layout.setVerticalGroup(
+            jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane6Layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EnrolledStudentLabel1)
+                    .addComponent(EnrolledStudentIDCHANGElabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EnrolledStudentLabel)
+                    .addComponent(EnrolledStudentCHANGELabel))
+                .addGap(18, 18, 18)
+                .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EnrolledExam1Box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EnrolledExam1Label))
+                .addGap(18, 18, 18)
+                .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EnrolledExam2Box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EnrolledExam2Label))
+                .addGap(18, 18, 18)
+                .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EnrolledFinalBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EnrolledFinalLabel))
+                .addGap(38, 38, 38)
+                .addComponent(EnrolledSubmitScoresButton)
+                .addContainerGap(237, Short.MAX_VALUE))
+        );
+        jLayeredPane6.setLayer(EnrolledExam1Box, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane6.setLayer(EnrolledStudentLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane6.setLayer(EnrolledExam1Label, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane6.setLayer(EnrolledSubmitScoresButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane6.setLayer(EnrolledExam2Label, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane6.setLayer(EnrolledExam2Box, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane6.setLayer(EnrolledFinalLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane6.setLayer(EnrolledFinalBox, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane6.setLayer(EnrolledStudentCHANGELabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane6.setLayer(EnrolledStudentLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane6.setLayer(EnrolledStudentIDCHANGElabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        EnrolledRefreshButton.setText("Refresh");
+        EnrolledRefreshButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EnrolledRefreshButtonMouseClicked(evt);
+            }
+        });
+
+        EnrolledDeleteRow.setText("Delete Row");
+        EnrolledDeleteRow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnrolledDeleteRowActionPerformed(evt);
+            }
+        });
+
+        CourseSelectComboBox.setModel(new javax.swing.DefaultComboBoxModel());
+        CourseSelectComboBox.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                CourseSelectComboBoxPropertyChange(evt);
+            }
+        });
+
+        CourseSelectLAbel.setText("Select A Course and Press Refresh");
+
+        EnrolledAddStudentCombo.setModel(new javax.swing.DefaultComboBoxModel());
+        EnrolledAddStudentCombo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                EnrolledAddStudentComboPropertyChange(evt);
+            }
+        });
+
+        EnrolledAddCourseCombo.setModel(new javax.swing.DefaultComboBoxModel());
+        EnrolledAddCourseCombo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                EnrolledAddCourseComboPropertyChange(evt);
+            }
+        });
+
+        EnrolledAddStudentButton.setText("Add Student");
+        EnrolledAddStudentButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EnrolledAddStudentButtonMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout EnrolledPanelLayout = new javax.swing.GroupLayout(EnrolledPanel);
+        EnrolledPanel.setLayout(EnrolledPanelLayout);
+        EnrolledPanelLayout.setHorizontalGroup(
+            EnrolledPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EnrolledPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(EnrolledPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EnrolledPanelLayout.createSequentialGroup()
+                        .addComponent(EnrolledAddStudentCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(EnrolledPanelLayout.createSequentialGroup()
+                        .addGroup(EnrolledPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(EnrolledAddCourseCombo, 0, 173, Short.MAX_VALUE)
+                            .addComponent(EnrolledAddStudentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                        .addGroup(EnrolledPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EnrolledPanelLayout.createSequentialGroup()
+                                .addGroup(EnrolledPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(CourseSelectLAbel)
+                                    .addGroup(EnrolledPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(CourseSelectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(EnrolledPanelLayout.createSequentialGroup()
+                                            .addComponent(EnrolledRefreshButton)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(EnrolledDeleteRow))))
+                                .addGap(134, 134, 134))
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+        );
+        EnrolledPanelLayout.setVerticalGroup(
+            EnrolledPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EnrolledPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(EnrolledPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EnrolledPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(EnrolledAddStudentCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CourseSelectLAbel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(EnrolledPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CourseSelectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EnrolledAddCourseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(EnrolledPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(EnrolledPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(EnrolledPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(EnrolledRefreshButton)
+                                    .addComponent(EnrolledDeleteRow))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(EnrolledPanelLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(EnrolledAddStudentButton))))
+                    .addGroup(EnrolledPanelLayout.createSequentialGroup()
+                        .addComponent(jLayeredPane6)
+                        .addContainerGap())))
+        );
+
+        Enrolled.addTab("Enrolled", EnrolledPanel);
+
         MainTab.addTab("Enrolled", Enrolled);
 
         DeptTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -1525,7 +1848,7 @@ public class StaffForm extends javax.swing.JFrame {
                         String room = rs.getString("ROOM");
                         CourseRoomBox.setText(room);
                         String FID = rs.getString("FID");
-                        setSelectedID(CourseInstructorComboBox, FID);
+                        setSelectedID(CourseInstructorComboBox, FID, 1);
                         String limit = rs.getString("LIMIT");
                         CourseMaxStudentsBox.setText(limit);
                         
@@ -1569,8 +1892,7 @@ public class StaffForm extends javax.swing.JFrame {
             String CourseName = CourseNameBoxNEW.getText();
             String CourseBuilding = CourseBuildingBoxNEW.getText();
             String CourseRoom = CourseRoomBoxNEW.getText();
-            int i = CourseInstructorComboBox.getSelectedIndex();
-            InstructorItem item = (InstructorItem) CourseInstructorComboBox.getSelectedItem();
+            InstructorItem item = (InstructorItem) CourseInstructorComboBoxNEW.getSelectedItem();
             String CourseInstructor = item.getid();
             String MaxStudents = CourseMaxStudentsBoxNEW.getText();
             String sql = "INSERT INTO COURSES (CID, CNAME, MEETS_AT, ROOM, FID, LIMIT) VALUES('"+CourseID+"', '"+CourseName+"', '"+CourseBuilding+"', '"+CourseRoom+"', '"+CourseInstructor+"', '"+MaxStudents+"')";
@@ -1671,6 +1993,140 @@ public class StaffForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_StudentDeleteRowActionPerformed
 
+    private void MainTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MainTabMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MainTabMouseClicked
+
+    private void MainTabStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MainTabStateChanged
+        /*if (evt.getSource() instanceof JTabbedPane) {
+            JTabbedPane pane = (JTabbedPane) evt.getSource();
+            if (pane.getSelectedIndex() == 1) {
+                updateFacultyTable();
+            }
+            if (pane.getSelectedIndex() == 2) {
+                updateStaffTable();
+            }
+            if (pane.getSelectedIndex() == 3) {
+                updateCourseTable();
+            }
+            if (pane.getSelectedIndex() == 4) {
+
+            }
+            if (pane.getSelectedIndex() == 5) {
+                updateDeptTable();
+            }
+            if (pane.getSelectedIndex() == 6) {
+                updateStudentTable();
+            }
+
+        }*/
+    }//GEN-LAST:event_MainTabStateChanged
+
+    private void EnrolledTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EnrolledTableMouseClicked
+       try
+        {
+            int row = EnrolledTable.getSelectedRow();
+            String tableClick = (EnrolledTable.getModel().getValueAt(row, 0).toString());
+            String sql = "select SID, SNAME, EXAM1, EXAM2, FINAL from Enrolled NATURAL JOIN Students where SID='"+tableClick+"'";
+            Connection conn = ConnectionConfig.getConnection();
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if(rs.next())
+                    {
+                        String SID = rs.getString("SID");
+                        EnrolledStudentIDCHANGElabel.setText(SID);
+                        String sname = rs.getString("SNAME");
+                        EnrolledStudentCHANGELabel.setText(sname);
+                        String exam1 = rs.getString("EXAM1");
+                        EnrolledExam1Box.setText(exam1);
+                        String exam2 = rs.getString("EXAM2");
+                        EnrolledExam2Box.setText(exam2);
+                        String finalscore = rs.getString("FINAL");
+                        EnrolledFinalBox.setText(finalscore);
+                    }
+            conn.close();
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        
+                }
+    }//GEN-LAST:event_EnrolledTableMouseClicked
+
+    private void EnrolledSubmitScoresButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EnrolledSubmitScoresButtonMouseClicked
+         try{
+            String SID = EnrolledStudentIDCHANGElabel.getText();
+            CourseItem item = (CourseItem) CourseSelectComboBox.getSelectedItem();
+            String CID = item.getid();
+            String exam1 = EnrolledExam1Box.getText();
+            String exam2 = EnrolledExam2Box.getText();
+            String finalscore = EnrolledFinalBox.getText();
+            String sql = "UPDATE ENROLLED SET EXAM1='"+exam1+"', EXAM2='"+exam2+"', FINAL='"+finalscore+"' WHERE SID='"+SID+"' AND CID='"+CID+"'";
+            Connection conn = ConnectionConfig.getConnection();
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            updateEnrolledTable();
+            conn.close();
+            JOptionPane.showMessageDialog(null, "Completed");
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+            
+        }
+    }//GEN-LAST:event_EnrolledSubmitScoresButtonMouseClicked
+
+    private void EnrolledRefreshButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EnrolledRefreshButtonMouseClicked
+        updateEnrolledTable();
+    }//GEN-LAST:event_EnrolledRefreshButtonMouseClicked
+
+    private void EnrolledDeleteRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnrolledDeleteRowActionPerformed
+        try{
+            String SID = EnrolledStudentIDCHANGElabel.getText();
+            String sql = "DELETE FROM ENROLLED WHERE SID='"+SID+"'";
+            Connection conn = ConnectionConfig.getConnection();
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            updateEnrolledTable();
+            conn.close();
+            JOptionPane.showMessageDialog(null, "Completed");
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_EnrolledDeleteRowActionPerformed
+
+    private void CourseSelectComboBoxPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_CourseSelectComboBoxPropertyChange
+     
+    }//GEN-LAST:event_CourseSelectComboBoxPropertyChange
+
+    private void EnrolledAddStudentComboPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_EnrolledAddStudentComboPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EnrolledAddStudentComboPropertyChange
+
+    private void EnrolledAddCourseComboPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_EnrolledAddCourseComboPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EnrolledAddCourseComboPropertyChange
+
+    private void EnrolledAddStudentButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EnrolledAddStudentButtonMouseClicked
+        try{
+            StudentItem item = (StudentItem) EnrolledAddStudentCombo.getSelectedItem();
+            CourseItem item2 = (CourseItem) EnrolledAddCourseCombo.getSelectedItem();
+            String SID = item.getid();
+            String CID = item2.getid();
+            String sql = "INSERT INTO ENROLLED (SID, CID, EXAM1, EXAM2, FINAL) VALUES('"+SID+"', '"+CID+"', '0', '0', '0')";
+            Connection conn = ConnectionConfig.getConnection();
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            updateEnrolledTable();
+            conn.close();
+            JOptionPane.showMessageDialog(null, "Completed");
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+            
+        }
+    }//GEN-LAST:event_EnrolledAddStudentButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1706,6 +2162,8 @@ public class StaffForm extends javax.swing.JFrame {
     private javax.swing.JTextField CourseRoomBoxNEW;
     private javax.swing.JLabel CourseRoomLabel;
     private javax.swing.JLabel CourseRoomLabelNew;
+    private javax.swing.JComboBox CourseSelectComboBox;
+    private javax.swing.JLabel CourseSelectLAbel;
     private javax.swing.JButton CourseSubmitButton;
     private javax.swing.JButton CourseSubmitButtonNEW;
     private javax.swing.JButton CoursesDeleteRow;
@@ -1728,6 +2186,24 @@ public class StaffForm extends javax.swing.JFrame {
     private javax.swing.JButton DeptSubmitButtonNEW;
     private javax.swing.JTable DeptTable;
     private javax.swing.JTabbedPane Enrolled;
+    private javax.swing.JComboBox EnrolledAddCourseCombo;
+    private javax.swing.JButton EnrolledAddStudentButton;
+    private javax.swing.JComboBox EnrolledAddStudentCombo;
+    private javax.swing.JButton EnrolledDeleteRow;
+    private javax.swing.JTextField EnrolledExam1Box;
+    private javax.swing.JLabel EnrolledExam1Label;
+    private javax.swing.JTextField EnrolledExam2Box;
+    private javax.swing.JLabel EnrolledExam2Label;
+    private javax.swing.JTextField EnrolledFinalBox;
+    private javax.swing.JLabel EnrolledFinalLabel;
+    private javax.swing.JPanel EnrolledPanel;
+    private javax.swing.JButton EnrolledRefreshButton;
+    private javax.swing.JLabel EnrolledStudentCHANGELabel;
+    private javax.swing.JLabel EnrolledStudentIDCHANGElabel;
+    private javax.swing.JLabel EnrolledStudentLabel;
+    private javax.swing.JLabel EnrolledStudentLabel1;
+    private javax.swing.JButton EnrolledSubmitScoresButton;
+    private javax.swing.JTable EnrolledTable;
     private javax.swing.JTextField FacultyDEPTIDBox;
     private javax.swing.JTextField FacultyDEPTIDBoxNEW;
     private javax.swing.JLabel FacultyDEPTIDLabel;
@@ -1795,13 +2271,17 @@ public class StaffForm extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane3;
     private javax.swing.JLayeredPane jLayeredPane4;
     private javax.swing.JLayeredPane jLayeredPane5;
+    private javax.swing.JLayeredPane jLayeredPane6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     // End of variables declaration//GEN-END:variables
 }
+
+
 class InstructorItem
 {
     private String name;
@@ -1849,7 +2329,32 @@ class StudentItem
     {
         return name;
     }
-    public String getID()
+    public String getid()
+    {
+        return id;
+    }
+}
+class CourseItem
+{
+    private String name;
+    private String id;
+    
+    public CourseItem(String name, String id)
+    {
+        this.name = name;
+        this.id = id;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return name;
+    }
+    public String getName()
+    {
+        return name;
+    }
+    public String getid()
     {
         return id;
     }
